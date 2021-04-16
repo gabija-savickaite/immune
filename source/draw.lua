@@ -1,14 +1,9 @@
-local function drawGameplay()
+local systems = require("source/systems")
 
-    background:draw()
+return function(dt)
 
-    enemies:draw()
-
-    towers:draw()
-    inventory:draw()
+    for _, v in ipairs(systems.draw) do
+        v(dt)
+    end
     
-    towerProjectiles:draw()
-
 end
-
-return drawGameplay

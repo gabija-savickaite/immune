@@ -1,4 +1,5 @@
 towers = {}
+local systems = require("source/systems")
 
 function spawnTower(x, y, type)
     
@@ -37,7 +38,7 @@ function spawnTower(x, y, type)
     table.insert(towers, tower)
 end
 
-function towers:update(dt)
+function update(dt)
 
     for _, v in ipairs(towers) do
         v:update(dt)
@@ -57,7 +58,7 @@ function towers:update(dt)
     end
 end
 
-function towers:draw()
+function draw()
     
     for _, v in ipairs(towers) do
         love.graphics.setColor(v.color.r, v.color.g, v.color.b, v.health / v.maxHealth)
@@ -94,3 +95,6 @@ function getTowerModel(x, y, type)
     return tower
 
 end
+
+systems.addUpdateFunction(update)
+systems.addDrawFunction(draw, 4)

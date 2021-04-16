@@ -1,7 +1,9 @@
 inventory = {}
 itemSelected = nil
 
-function inventory:draw()
+local systems = require("source/systems")
+
+function draw()
     
     for _, v in ipairs(inventory) do
         love.graphics.setColor(v.color.r, v.color.g, v.color.b)
@@ -67,3 +69,5 @@ function addToInventory(x, y, type)
     table.insert(inventory, getTowerModel(x, y, type))
 
 end
+
+systems.addDrawFunction(draw, 5)

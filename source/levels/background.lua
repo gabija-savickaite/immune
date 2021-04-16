@@ -1,6 +1,7 @@
 background = {}
+local systems = require("source/systems")
 
-function background:draw()
+function draw()
 
     love.graphics.setBackgroundColor(1, 1, 1)
     love.graphics.setColor(0, 0, 0)
@@ -38,3 +39,5 @@ function getGridLines()
     return lines
 
 end
+
+systems.addDrawFunction(draw, 1)
