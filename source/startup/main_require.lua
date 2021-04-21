@@ -1,8 +1,12 @@
 function getGlobals()
 
+    gui = require "source/libraries/gspot"
+
     require("source/global/utilities")
     require("source/global/gameState")
     gameStateInit()
+    
+    require("source/ui/gameOverMenu")
     
     require("source/enemies/enemy")
     

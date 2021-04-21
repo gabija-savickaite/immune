@@ -1,4 +1,4 @@
-local function drawGameplay()
+function drawGameplay()
 
     background:draw()
 
@@ -11,4 +11,8 @@ local function drawGameplay()
 
 end
 
-return drawGameplay
+function drawGameOverMenu()
+
+    gameOverMenu:draw()
+
+end

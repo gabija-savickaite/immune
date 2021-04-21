@@ -1,4 +1,4 @@
-local function updateGameplay(dt)
+function updateGameplay(dt)
     
     towerProjectiles:update(dt)
 
@@ -8,4 +8,8 @@ local function updateGameplay(dt)
     
 end
 
-return updateGameplay
+function updateGameOverMenu(dt)
+
+    gameOverMenu:update(dt)
+
+end

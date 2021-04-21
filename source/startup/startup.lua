@@ -18,6 +18,8 @@ function startup()
 
     -- GAME SETUP
 
+    math.randomseed(os.time())
+
     require("source/startup/main_require")
     getGlobals()
 

@@ -1,5 +1,5 @@
 enemies = {}
-local spawnInterval = 1
+local spawnInterval = 2
 local timer = 0
 
 function spawnEnemy(x)
@@ -18,7 +18,7 @@ function spawnEnemy(x)
     enemy.maxCooldown = 3
 
     enemy.colour = { r = 0, g = 0, b = 0 }
-    enemy.radius = 20
+    enemy.radius = 30
 
     function enemy:update(dt)
         local canMove = true
@@ -40,6 +40,9 @@ function spawnEnemy(x)
         end
         if canMove then
             self.y = self.y + self.speed * dt
+            if self.y > love.graphics.getHeight() - squareSide - self.radius then
+                gameOver()
+            end
         end
     end
 
@@ -72,7 +75,17 @@ function enemies:draw()
 
     for _, e in ipairs(self) do
         love.graphics.setColor(e.colour.r, e.colour.g, e.colour.b, e.health / e.maxHealth)
-        love.graphics.circle("fill", e.x, e.y, 30)
+        love.graphics.circle("fill", e.x, e.y, e.radius)
+    end
+
+end
+
+function gameOver()
+    
+    gameState.state = 2
+
+    for i=#enemies, 1, -1 do
+        table.remove(enemies, i)
     end
 
 end
