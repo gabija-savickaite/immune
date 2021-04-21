@@ -18,6 +18,8 @@ return function()
 
     -- GAME SETUP
 
+    math.randomseed(os.time())
+
     local getGlobals = require("source/startup/main_require")
     getGlobals()
 

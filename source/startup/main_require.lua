@@ -1,7 +1,11 @@
 return function()
 
+    gui = require "source/libraries/gspot"
+
     require("source/global/gameState")
     gameStateInit()
+    
+    require("source/ui/gameOverMenu")
     
     require("source/enemies/enemy")
     

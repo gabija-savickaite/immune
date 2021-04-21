@@ -1,5 +1,5 @@
 enemies = {}
-local spawnInterval = 1
+local spawnInterval = 2
 local timer = 0
 
 local systems = require("source/systems")
@@ -21,7 +21,7 @@ local function spawnEnemy(x)
     enemy.maxCooldown = 3
 
     enemy.color = { r = 0, g = 0, b = 0 }
-    enemy.radius = 20
+    enemy.radius = 30
 
     function enemy:update(dt)
         
@@ -49,6 +49,9 @@ local function spawnEnemy(x)
         end
         if canMove then
             self.y = self.y + self.speed * dt
+            if self.y > love.graphics.getHeight() - squareSide - self.radius then
+                gameOver()
+            end
         end
     end
 
@@ -88,3 +91,13 @@ end
 
 systems.addUpdateFunction(update)
 systems.addDrawFunction(draw, 2)
+
+function gameOver()
+    
+    gameState.state = 2
+
+    for i=#enemies, 1, -1 do
+        table.remove(enemies, i)
+    end
+
+end
