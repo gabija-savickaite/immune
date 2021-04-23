@@ -3,7 +3,7 @@ inventory = {}
 itemSelected = nil
 
 local systems = require("source/systems")
-local util = require("source/global/utilities")
+local util = require("source/global/util")
 
 local function draw()
     

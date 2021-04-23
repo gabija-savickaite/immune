@@ -3,7 +3,7 @@ local spawnInterval = 2
 local timer = 0
 
 local systems = require("source/systems")
-local util = require("source/global/util")
+local util = require("source/global/utilities")
 
 local function spawnEnemy(x)
 
@@ -11,7 +11,7 @@ local function spawnEnemy(x)
 
     enemy.x = x
     enemy.y = 0
-    enemy.speed = 150
+    enemy.speed = 10
 
     -- one kind of enemies for now
     enemy.dead = false
@@ -20,8 +20,13 @@ local function spawnEnemy(x)
     enemy.cooldown = 3
     enemy.maxCooldown = 3
 
+<<<<<<< HEAD
     enemy.color = { r = 0, g = 0, b = 0 }
+    enemy.radius = 20
+=======
+    enemy.colour = { r = 0, g = 0, b = 0 }
     enemy.radius = 30
+>>>>>>> game over UI
 
     function enemy:update(dt)
         
@@ -89,16 +94,17 @@ local function draw()
 
 end
 
+<<<<<<< HEAD
 systems.addUpdateFunction(update)
 systems.addDrawFunction(draw, 2)
-
+=======
 function gameOver()
     
-    gameState.state = State.GameOver
-    gui = gameOverMenu
+    gameState.state = 2
 
     for i=#enemies, 1, -1 do
         table.remove(enemies, i)
     end
 
 end
+>>>>>>> game over UI

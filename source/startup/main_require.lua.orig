@@ -1,11 +1,15 @@
 return function()
 
+<<<<<<< HEAD
+=======
     gui = require "source/libraries/gspot"
 
+    require("source/global/utilities")
+>>>>>>> game over UI
     require("source/global/gameState")
     gameStateInit()
     
-    require("source/ui/ui")
+    require("source/ui/gameOverMenu")
     
     require("source/enemies/enemy")
     

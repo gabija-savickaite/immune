@@ -24,8 +24,12 @@ return function()
     getGlobals()
 
     calculatePositions()
+<<<<<<< HEAD
     inventory.populate()
+=======
+    populateInventory()
     
     loadUI()
+>>>>>>> wip
 
 end
