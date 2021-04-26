@@ -2,6 +2,8 @@ enemies = {}
 local spawnInterval = 1
 local timer = 0
 
+local systems = require("source/systems")
+
 function spawnEnemy(x)
 
     local enemy = {}
@@ -47,9 +49,9 @@ function spawnEnemy(x)
 
 end
 
-function enemies:update(dt)
+function update(dt)
 
-    for _, e in ipairs(self) do
+    for _, e in ipairs(enemies) do
         e:update(dt)
     end
 
@@ -68,11 +70,14 @@ function enemies:update(dt)
 
 end
 
-function enemies:draw()
+function draw()
 
-    for _, e in ipairs(self) do
+    for _, e in ipairs(enemies) do
         love.graphics.setColor(e.colour.r, e.colour.g, e.colour.b, e.health / e.maxHealth)
         love.graphics.circle("fill", e.x, e.y, 30)
     end
 
 end
+
+systems.addUpdateFunction(update)
+systems.addDrawFunction(draw, 2)

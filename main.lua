@@ -1,6 +1,6 @@
 function love.load()
 
-    require("source/startup/startup")
+    local startup = require("source/startup/startup")
     startup()
 
 end

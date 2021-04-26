@@ -1,9 +1,11 @@
 inventory = {}
 itemSelected = nil
 
-function inventory:draw()
+local systems = require("source/systems")
+
+function draw()
     
-    for _, t in ipairs(self) do
+    for _, t in ipairs(inventory) do
         love.graphics.setColor(t.colour.r, t.colour.g, t.colour.b)
         love.graphics.circle("fill", t.x, t.y, t.radius)
     end
@@ -57,3 +59,5 @@ function addToInventory(x, y, type)
     table.insert(inventory, getTowerModel(x, y, type))
 
 end
+
+systems.addDrawFunction(draw, 5)

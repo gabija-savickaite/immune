@@ -1,4 +1,4 @@
-function startup()
+return function()
     
     -- GAME WINDOW CONFIGURATION
 

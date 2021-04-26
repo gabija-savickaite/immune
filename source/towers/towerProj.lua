@@ -1,4 +1,5 @@
 towerProjectiles = {}
+local systems = require("source/systems")
 
 function spawnTowerProj(x, y, tower)
 
@@ -30,9 +31,9 @@ function spawnTowerProj(x, y, tower)
   
 end
 
-function towerProjectiles:update(dt)
+function update(dt)
 
-    for _, s in ipairs(self) do
+    for _, s in ipairs(towerProjectiles) do
       s:update(dt)
     end
   
@@ -48,11 +49,14 @@ function towerProjectiles:update(dt)
 
 end
 
-function towerProjectiles:draw()
+function draw()
 
-    for _, p in ipairs(self) do
+    for _, p in ipairs(towerProjectiles) do
         love.graphics.setColor(p.colour.r, p.colour.g, p.colour.b)
         love.graphics.circle("fill", p.x, p.y, 4)
     end
   
 end
+
+systems.addUpdateFunction(update)
+systems.addDrawFunction(draw, 3)
