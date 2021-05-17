@@ -1,18 +1,7 @@
 background = {}
 local systems = require("source/systems")
 
-function draw()
-
-    love.graphics.setBackgroundColor(1, 1, 1)
-    love.graphics.setColor(0, 0, 0)
-
-    for _, v in ipairs(getGridLines()) do
-        love.graphics.line(v.x1, v.y1, v.x2, v.y2)
-    end
-  
-end
-
-function getGridLines()
+local function getGridLines()
 
     local lines = {}
 
@@ -38,6 +27,17 @@ function getGridLines()
 
     return lines
 
+end
+
+local function draw()
+
+    love.graphics.setBackgroundColor(1, 1, 1)
+    love.graphics.setColor(0, 0, 0)
+
+    for _, v in ipairs(getGridLines()) do
+        love.graphics.line(v.x1, v.y1, v.x2, v.y2)
+    end
+  
 end
 
 systems.addDrawFunction(draw, 1)

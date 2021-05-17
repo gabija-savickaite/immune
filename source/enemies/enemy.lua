@@ -4,7 +4,7 @@ local timer = 0
 
 local systems = require("source/systems")
 
-function spawnEnemy(x)
+local function spawnEnemy(x)
 
     local enemy = {}
 
@@ -28,7 +28,7 @@ function spawnEnemy(x)
 
         for _, v in ipairs(towers) do
 
-            if distance(v.x, v.y, self.x, self.y) < v.radius + self.radius and self.y < v.y then
+            if util.distance(v.x, v.y, self.x, self.y) < v.radius + self.radius and self.y < v.y then
 
                 canMove = false
 
@@ -38,7 +38,7 @@ function spawnEnemy(x)
 
                 self.cooldown = self.cooldown - dt
                 if self.cooldown <= 0 then
-                    v.health = t.health - 10
+                    v.health = v.health - 10
                     if v.health <= 0 then
                         v.dead = true
                     end
@@ -55,7 +55,7 @@ function spawnEnemy(x)
 
 end
 
-function update(dt)
+local function update(dt)
 
     for _, v in ipairs(enemies) do
         v:update(dt)
@@ -76,7 +76,7 @@ function update(dt)
 
 end
 
-function draw()
+local function draw()
 
     for _, v in ipairs(enemies) do
         love.graphics.setColor(v.color.r, v.color.g, v.color.b, v.health / v.maxHealth)

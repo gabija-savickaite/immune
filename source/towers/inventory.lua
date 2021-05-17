@@ -3,7 +3,7 @@ itemSelected = nil
 
 local systems = require("source/systems")
 
-function draw()
+local function draw()
     
     for _, v in ipairs(inventory) do
         love.graphics.setColor(v.color.r, v.color.g, v.color.b)
@@ -20,8 +20,8 @@ end
 function onPress(x, y)
 
     for i, v in ipairs(inventory) do
-        if distance(v.x, v.y, x, y) < 30 then
-            itemSelected = shallowCopy(inventory[i])
+        if util.distance(v.x, v.y, x, y) < 30 then
+            itemSelected = util.shallowCopy(inventory[i])
         end
     end
 
@@ -42,7 +42,7 @@ function onRelease(x, y)
 
         for _, v in ipairs(towerPositions) do
             if math.abs(x - v.x) < squareSide / 2 and math.abs(y - v.y) < squareSide / 2 and v.occupied == false then
-                spawnTower(v.x, v.y, itemSelected.type)
+                towers.spawnTower(v.x, v.y, itemSelected.type)
                 v.occupied = true
             end
         end
@@ -52,7 +52,13 @@ function onRelease(x, y)
 
 end
 
-function populateInventory()
+local function addToInventory(x, y, type)
+
+    table.insert(inventory, towers.getTowerModel(x, y, type))
+
+end
+
+function inventory.populateInventory()
     
     for i = 1, #gameState.inventory do
 
@@ -61,12 +67,6 @@ function populateInventory()
         end
         
     end
-
-end
-
-function addToInventory(x, y, type)
-
-    table.insert(inventory, getTowerModel(x, y, type))
 
 end
 

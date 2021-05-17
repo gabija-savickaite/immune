@@ -1,7 +1,7 @@
 towerProjectiles = {}
 local systems = require("source/systems")
 
-function spawnTowerProj(x, y, tower)
+function towerProjectiles.spawnTowerProj(x, y, tower)
 
     local proj = {}
     proj.x = x
@@ -17,7 +17,7 @@ function spawnTowerProj(x, y, tower)
         self.y = self.y - self.speed * dt
   
         for _, v in ipairs(enemies) do
-            if distance(v.x, v.y, self.x, self.y) < v.radius + self.radius then
+            if util.distance(v.x, v.y, self.x, self.y) < v.radius + self.radius then
                 v.health = v.health - self.damage
                 self.dead = true
                 if v.health <= 0 then
@@ -31,7 +31,7 @@ function spawnTowerProj(x, y, tower)
   
 end
 
-function update(dt)
+local function update(dt)
 
     for _, v in ipairs(towerProjectiles) do
       v:update(dt)
@@ -49,7 +49,7 @@ function update(dt)
 
 end
 
-function draw()
+local function draw()
 
     for _, v in ipairs(towerProjectiles) do
         love.graphics.setColor(v.color.r, v.color.g, v.color.b)

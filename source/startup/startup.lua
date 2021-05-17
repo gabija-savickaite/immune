@@ -2,11 +2,11 @@ return function()
     
     -- GAME WINDOW CONFIGURATION
 
-    coreWidth = 720
-    coreHeight = 960
-    scale = 1
-    shiftDown = 0
-    osString = love.system.getOS()
+    local coreWidth = 720
+    local coreHeight = 960
+    local scale = 1
+    local shiftDown = 0
+    local osString = love.system.getOS()
     if osString == "Android" or osString == "iOS" then
         scale = love.graphics.getWidth()/coreWidth
         shiftDown = (love.graphics.getHeight() - (coreHeight * scale)) / 2 / scale
@@ -18,10 +18,10 @@ return function()
 
     -- GAME SETUP
 
-    require("source/startup/main_require")
+    local getGlobals = require("source/startup/main_require")
     getGlobals()
 
     calculatePositions()
-    populateInventory()
+    inventory.populateInventory()
 
 end
