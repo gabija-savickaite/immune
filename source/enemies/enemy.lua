@@ -3,6 +3,7 @@ local spawnInterval = 1
 local timer = 0
 
 local systems = require("source/systems")
+local util = require("source/global/utilities")
 
 local function spawnEnemy(x)
 

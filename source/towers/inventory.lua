@@ -2,6 +2,7 @@ inventory = {}
 itemSelected = nil
 
 local systems = require("source/systems")
+local util = require("source/global/utilities")
 
 local function draw()
     
@@ -42,7 +43,7 @@ function onRelease(x, y)
 
         for _, v in ipairs(towerPositions) do
             if math.abs(x - v.x) < squareSide / 2 and math.abs(y - v.y) < squareSide / 2 and v.occupied == false then
-                towers.spawnTower(v.x, v.y, itemSelected.type)
+                towers.spawn(v.x, v.y, itemSelected.type)
                 v.occupied = true
             end
         end
@@ -53,12 +54,10 @@ function onRelease(x, y)
 end
 
 local function addToInventory(x, y, type)
-
     table.insert(inventory, towers.getTowerModel(x, y, type))
-
 end
 
-function inventory.populateInventory()
+function inventory.populate()
     
     for i = 1, #gameState.inventory do
 

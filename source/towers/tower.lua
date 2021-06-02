@@ -1,7 +1,7 @@
 towers = {}
 local systems = require("source/systems")
 
-function towers.spawnTower(x, y, type)
+function towers.spawn(x, y, type)
     
     local tower = towers.getTowerModel(x, y, type)
 
@@ -30,7 +30,7 @@ function towers.spawnTower(x, y, type)
     function tower:update(dt)
         self.cooldown = self.cooldown - dt
         if self.type ~= "skin" and self.cooldown <= 0 then
-            towerProjectiles.spawnTowerProj(self.x, self.y, tower)
+            towerProjectiles.spawn(self.x, self.y, tower)
             self.cooldown = self.maxCooldown
         end
     end

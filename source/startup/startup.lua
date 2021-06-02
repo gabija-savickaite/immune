@@ -22,6 +22,6 @@ return function()
     getGlobals()
 
     calculatePositions()
-    inventory.populateInventory()
+    inventory.populate()
 
 end

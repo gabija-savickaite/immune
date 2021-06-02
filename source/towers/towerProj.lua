@@ -1,7 +1,9 @@
 towerProjectiles = {}
-local systems = require("source/systems")
 
-function towerProjectiles.spawnTowerProj(x, y, tower)
+local systems = require("source/systems")
+local util = require("source/global/utilities")
+
+function towerProjectiles.spawn(x, y, tower)
 
     local proj = {}
     proj.x = x
