@@ -1,7 +1,7 @@
 towerProjectiles = {}
 
 local systems = require("source/systems")
-local util = require("source/global/utilities")
+local util = require("source/global/util")
 
 function towerProjectiles.spawn(x, y, tower)
 

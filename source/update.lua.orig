@@ -1,0 +1,24 @@
+<<<<<<< HEAD
+local systems = require("source/systems")
+=======
+function updateGameplay(dt)
+    
+    towerProjectiles:update(dt)
+>>>>>>> game over UI
+
+return function(dt)
+
+    for _, v in pairs(systems.update) do
+        v(dt)
+    end
+    
+end
+<<<<<<< HEAD
+=======
+
+function updateGameOverMenu(dt)
+
+    gameOverMenu:update(dt)
+
+end
+>>>>>>> game over UI

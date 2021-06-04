@@ -3,28 +3,29 @@ function love.load()
     local startup = require("source/startup/startup")
     startup()
 
+    gameOverMenu:load()
 end
 
 function love.update(dt)
 
-    updateGameplay = require("source/update")
+    require("source/update")
 
-    if gameState.state == State.Gameplay then
+    if gameState.state == 1 then
         updateGameplay(dt)
-    else
-        gui:update(dt)
+    elseif gameState.state == 2 then
+        updateGameOverMenu(dt)
     end
 
 end
 
 function love.draw()
 
-    drawGameplay = require("source/draw")
+    require("source/draw")
 
-    if gameState.state == State.Gameplay then
+    if gameState.state == 1 then
         drawGameplay()
-    else
-        gui:draw()
+    elseif gameState.state == 2 then
+        drawGameOverMenu()
     end
 
 end
@@ -41,7 +42,14 @@ function love.mousemoved(x, y, dx, dy, button)
 end
 
 function love.mousereleased(x, y, dx, dy, button)
+<<<<<<< HEAD
     inventory.onRelease(x, y)
+end
+
+function love.touchpressed(id, x, y, dx, dy, pressure)
+    inventory.onPress(x, y)
+=======
+    onRelease(x, y)
 	gui:mouserelease(x, y, button)
 end
 
@@ -50,8 +58,9 @@ function love.wheelmoved(x, y)
 end
 
 function love.touchpressed(id, x, y, dx, dy, pressure)
-    inventory.onPress(x, y)
+    onPress(x, y)
     gui:mousepress(x, y, button)
+>>>>>>> game over UI
 end
 
 function love.touchmoved(id, x, y, dx, dy, pressure)
@@ -59,6 +68,10 @@ function love.touchmoved(id, x, y, dx, dy, pressure)
 end
 
 function love.touchreleased(id, x, y, dx, dy)
+<<<<<<< HEAD
     inventory.onRelease(x, y)
+=======
+    onRelease(x, y)
 	gui:mouserelease(x, y, button)
+>>>>>>> game over UI
 end

@@ -1,3 +1,4 @@
+
 towerPositions = {}
 inventoryPositions = {}
 columns = {}
