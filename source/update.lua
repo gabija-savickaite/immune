@@ -1,11 +1,9 @@
-local function updateGameplay(dt)
-    
-    towerProjectiles:update(dt)
+local systems = require("source/systems")
 
-    towers:update(dt)
+return function(dt)
 
-    enemies:update(dt)
+    for _, v in pairs(systems.update) do
+        v(dt)
+    end
     
 end
-
-return updateGameplay

@@ -1,6 +1,5 @@
-function getGlobals()
+return function()
 
-    require("source/global/utilities")
     require("source/global/gameState")
     gameStateInit()
     
