@@ -18,7 +18,7 @@ local function draw()
 
 end
 
-function onPress(x, y)
+function inventory.onPress(x, y)
 
     for i, v in ipairs(inventory) do
         if util.distance(v.x, v.y, x, y) < 30 then
@@ -28,7 +28,7 @@ function onPress(x, y)
 
 end
 
-function onDrag(x, y)
+function inventory.onDrag(x, y)
 
     if itemSelected ~= nil then
         itemSelected.x = x
@@ -37,7 +37,7 @@ function onDrag(x, y)
 
 end
 
-function onRelease(x, y)
+function inventory.onRelease(x, y)
 
     if itemSelected ~= nil then
 
