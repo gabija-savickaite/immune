@@ -1,8 +1,9 @@
 towers = {}
+local systems = require("source/systems")
 
-function spawnTower(x, y, type)
+function towers.spawn(x, y, type)
     
-    local tower = getTowerModel(x, y, type)
+    local tower = towers.getTowerModel(x, y, type)
 
     tower.dead = false
 
@@ -29,7 +30,7 @@ function spawnTower(x, y, type)
     function tower:update(dt)
         self.cooldown = self.cooldown - dt
         if self.type ~= "skin" and self.cooldown <= 0 then
-            spawnTowerProj(self.x, self.y, tower)
+            towerProjectiles.spawn(self.x, self.y, tower)
             self.cooldown = self.maxCooldown
         end
     end
@@ -37,7 +38,7 @@ function spawnTower(x, y, type)
     table.insert(towers, tower)
 end
 
-function towers:update(dt)
+local function update(dt)
 
     for _, v in ipairs(towers) do
         v:update(dt)
@@ -57,7 +58,7 @@ function towers:update(dt)
     end
 end
 
-function towers:draw()
+local function draw()
     
     for _, v in ipairs(towers) do
         love.graphics.setColor(v.color.r, v.color.g, v.color.b, v.health / v.maxHealth)
@@ -66,7 +67,7 @@ function towers:draw()
 
 end
 
-function getTowerModel(x, y, type)
+function towers.getTowerModel(x, y, type)
 
     local tower = {}
 
@@ -94,3 +95,6 @@ function getTowerModel(x, y, type)
     return tower
 
 end
+
+systems.addUpdateFunction(update)
+systems.addDrawFunction(draw, 4)
